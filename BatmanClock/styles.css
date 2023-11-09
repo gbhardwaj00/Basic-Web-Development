@@ -1,0 +1,13 @@
+body { 
+    background: no-repeat url("https://images7.alphacoders.com/133/1330752.png");
+    background-size: cover;
+    margin: auto auto;
+  }
+  
+label {
+color: white;
+font-size: 25px;
+display: block;
+text-align: center;
+font-family: Arial, Helvetica, sans-serif;
+}
