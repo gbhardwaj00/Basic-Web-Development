@@ -1,0 +1,14 @@
+#myBox {
+  background-color: red;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  margin: auto auto;
+}
+
+body {
+  background-color: #333;
+  text-align: center;
+  color: white;
+  font-size: large;
+}
