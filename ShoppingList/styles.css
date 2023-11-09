@@ -1,0 +1,26 @@
+h1 {
+  background-color: green; 
+  padding: 0 20px 0 20px;
+  display: inline-block;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+ul {
+  list-style-position: inside;
+}
+
+li button {
+  margin-left: 10px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+body {
+  text-align: center;
+  font-size: 1.5em;
+}
