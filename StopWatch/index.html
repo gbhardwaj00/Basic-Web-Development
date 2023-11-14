@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en-us" data-theme="light">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Stopwatch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <button type="button" class="themeBtn" data-theme-toggle aria-label="Change to light theme">&#x263D</button>
+    <div id="clock">
+        <div id="hours" class="box largeFont">00</div>
+        <div class="colorText largeFont">:</div>
+        <div id="minutes" class="box largeFont">00</div>
+        <div class="colorText largeFont">:</div>
+        <div id="seconds" class="box largeFont">00</div>
+        <div id="mSeconds">00</div>
+    </div>
+    <div id="buttons">
+        <button id="mainBtn" class="button" style="background-color: darkgreen;">Start</button>
+        <button id="resetBtn" class="button">Reset</button>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
