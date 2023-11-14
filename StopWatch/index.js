@@ -63,7 +63,7 @@ function setZero(num) {
 }
 
 function update() {
-  hours = Math.round(elapsedTime/(1000*60*60))
+  hours = Math.floor(elapsedTime/(1000*60*60))
   minutes = Math.floor(elapsedTime/(1000*60)) % 60
   seconds = Math.floor(elapsedTime/(1000)) % 60
   mSeconds = Math.floor(elapsedTime % (1000)/10)

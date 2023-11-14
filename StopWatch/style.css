@@ -41,7 +41,8 @@ body {
 #clock {
     padding: 0 1em;
     height: 10em;
-    width: 35em;
+    min-width: 35em;
+    width: auto;
     border: 1em solid var(--color-sw-border);
     background-color: var(--color-sw-bg);
     border-radius: 3em;
@@ -52,7 +53,9 @@ body {
 }
 
 .box {
-    width: 1.2em;
+    margin: 0.1em;
+    min-width: 1.2em;
+    width: auto;
     height: 1.2em;
     background-color: var(--color-sw-box);
     border-radius: 0.2em;
