@@ -42,8 +42,8 @@ function clearSW() {
 
 function toggleStart() {
   if(currentInterval) {
-    mainBtn.textContent = 'Start'
-    mainBtn.style.backgroundColor = 'darkgreen';
+    mainBtn.textContent = 'Resume'
+    mainBtn.style.backgroundColor = '#F08000';
     clearInterval(currentInterval)
     currentInterval = null
   }
