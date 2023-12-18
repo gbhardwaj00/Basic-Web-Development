@@ -1,6 +1,7 @@
 const cells = document.querySelectorAll(".cell")
 const gameInfoText = document.querySelector("#gameInfo")
 const restartBtn = document.querySelector("#restartBtn")
+const gameBoard = document.querySelector("#gameBoard")
 
 let running = false
 let currentPlayer = 'X'
@@ -52,6 +53,7 @@ function checkWinOrDraw(){
         if (cell1 == cell2 && cell2 == cell3) {
             gameInfoText.textContent = `${currentPlayer} won! Restart to play again.`
             running = false
+            drawCrossLine(winPatterns[i])
             return 
         }
     }
@@ -75,5 +77,75 @@ function resetGame() {
     running = true
     gameInfoText.textContent = `${currentPlayer}'s turn`
     cells.forEach((cell) => cell.textContent = "")
+    const line = document.getElementById("cross-line")
+    if (line != null) {
+        line.remove();
+    }
 }
 
+function drawCrossLine(cellsToCross) {
+    const line = document.createElement("div")
+    line.classList.add("cross-line")
+    line.id = 'cross-line';
+    adjustLineOrientation(line, cellsToCross)
+    gameBoard.appendChild(line)
+}
+
+function adjustLineOrientation(line, cellsToCross) {
+    if (isArrayEqual(cellsToCross, winPatterns[0])) {
+        line.style.top = "16.7%";
+        line.style.width = "100%"
+        line.style.height = "5px"
+        line.style.animationName = "horizontal";
+    }
+    else if (isArrayEqual(cellsToCross, winPatterns[1])) {
+        line.style.top = "50%";
+        line.style.width = "100%"
+        line.style.height = "5px"
+        line.style.animationName = "horizontal";
+    }
+    else if (isArrayEqual(cellsToCross, winPatterns[2])) {
+        line.style.top = "83.3%";
+        line.style.width = "100%"
+        line.style.height = "5px"
+        line.style.animationName = "horizontal";
+    }
+    else if (isArrayEqual(cellsToCross, winPatterns[3])) {
+        line.style.left = "16.5%";
+        line.style.height = "100%"
+        line.style.width = "5px"
+        line.style.animationName = "vertical";
+    }
+    else if (isArrayEqual(cellsToCross, winPatterns[4])) {
+        line.style.left = "50%";
+        line.style.height = "100%"
+        line.style.width = "5px"
+        line.style.animationName = "vertical";
+    }
+    else if (isArrayEqual(cellsToCross, winPatterns[5])) {
+        line.style.left = "83.3%";
+        line.style.height = "100%"
+        line.style.width = "5px"
+        line.style.animationName = "vertical";
+    }
+    else if (isArrayEqual(cellsToCross, winPatterns[6])) {
+        line.style.width = `${Math.sqrt(2)*gameBoard.offsetWidth}px`;
+        // line.style.left = `-${(Math.sqrt(2)*gameBoard.offsetWidth-gameBoard.offsetWidth)/2}px`
+        line.style.height = "5px";
+        line.style.transform = "rotate(45deg)";
+        line.style.animationName = "diagonal";
+        line.style.transformOrigin = "top left";
+    }
+    else if (isArrayEqual(cellsToCross, winPatterns[7])) {
+        line.style.width = `${Math.sqrt(2)*gameBoard.offsetWidth}px`;
+        line.style.left = `-${(Math.sqrt(2)*gameBoard.offsetWidth-gameBoard.offsetWidth)}px`
+        line.style.height = "5px";
+        line.style.transform = "rotate(-45deg)";
+        line.style.animationName = "diagonal-reverse";
+        line.style.transformOrigin = "top right";
+    }
+}
+
+function isArrayEqual(a, b) {
+    return (a.length === b.length && a.every((val, index) => val === b[index]))
+}

@@ -14,6 +14,7 @@ body {
 h1 {
     font-size: 3.5rem;
     font-style: italic;
+    margin-bottom: 1rem;
 }
 
 #gameContainer {
@@ -27,6 +28,7 @@ h1 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     width: fit-content;
+    position: relative;
 }
 
 .cell {
@@ -58,4 +60,46 @@ h1 {
 #restartBtn:hover {
     background-color: #000000;
     color: #ffffff;
+}
+
+.cross-line {
+    position: absolute;
+    background-color: #c90e0e;
+    animation-duration: 1s;
+}
+  
+@keyframes horizontal {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes vertical {
+    from {
+        height: 0%;
+    }
+    to {
+        height: 100%;
+    }
+}
+
+@keyframes diagonal {
+    from {
+        transform: rotate(45deg) scaleX(0);
+    }
+    to {
+        transform: rotate(45deg) scaleX(1);
+    }
+}
+
+@keyframes diagonal-reverse {
+    from {
+        transform: rotate(-45deg) scaleX(0);
+    }
+    to {
+        transform: rotate(-45deg) scaleX(1);
+    }
 }
