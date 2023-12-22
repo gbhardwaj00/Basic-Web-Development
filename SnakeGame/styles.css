@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap');
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color:rgb(150, 175, 79);
+    margin: 0;
+    font-family: 'Nova Square', sans-serif;;
+}
+
+#gameContainer {
+    text-align: center;
+}
+
+#gameStatus {
+    display: flex;
+    justify-content: space-between;
+}
+
+#gameScore {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgba(16, 22, 25, 0.75);
+}
+
+#overStatus {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgba(16, 22, 25, 0.75);
+}
+
+#gameBoard {
+    border: 0.4rem solid rgba(16, 22, 25, 0.75);
+}
+
+
+#controlButtons > button {
+    background-color: rgb(150, 175, 79);
+    color: rgba(16, 22, 25, 0.75);
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin: 1rem;
+    padding: 0.50rem 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 0.2rem solid rgba(16, 22, 25, 0.75);
+}
+
+#controlButtons > button:hover {
+    background-color: rgba(16, 22, 25, 0.75);
+    color: rgb(150, 175, 79);
+}
+
+hr {
+    border: 0.2rem solid rgba(16, 22, 25, 0.75);
+  }
