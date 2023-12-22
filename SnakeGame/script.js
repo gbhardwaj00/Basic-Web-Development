@@ -19,6 +19,7 @@ let xStep
 let yStep
 let running = false
 let startedGame = false
+let foundFood = false
 
 let tickTime
 const minSpeedTickTime = 70
@@ -132,6 +133,7 @@ function moveSnake() {
         if (tickTime > minSpeedTickTime) {
             tickTime -= 6
         }
+        foundFood = true
     }
     else {
         snake.pop()
@@ -139,6 +141,11 @@ function moveSnake() {
 }
 
 function generateSnake() {
+    if(foundFood) {
+        context.fillStyle = boardColor
+        context.fillRect(snake[0].x, snake[0].y, unitSize, unitSize)
+        foundFood = false
+    }
     context.fillStyle = snakeColor
     context.strokeStyle = snakeBorderColor
     snake.forEach((snakePart) => {
