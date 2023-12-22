@@ -21,13 +21,16 @@ let running = false
 let startedGame = false
 
 let tickTime
-let minSpeedTickTime = 70
+const minSpeedTickTime = 70
 let timeoutId
 
 let foodPositionX
 let foodPositionY
 let gameSpeedAduster
 let movesQueue
+
+let xStart = null                                                     
+let yStart = null
 
 let snake = [
     {x: unitSize * 4, y: 0},
@@ -40,6 +43,9 @@ let snake = [
 window.addEventListener("keydown", changeDirection);
 startBtn.addEventListener("click", startGame)
 resetBtn.addEventListener("click", resetGame)
+
+gameBoard.addEventListener('touchstart', handleTouchStart, false)      
+gameBoard.addEventListener('touchend', handleTouchEnd, false)
 
 generateStartScreen()
 
@@ -70,17 +76,11 @@ function nextTick() {
         console.log("if")
         timeoutId = setTimeout(() => {
             clearBoard()
-            console.log("clearBoard")
             drawFood()
-            console.log("drawFood")
             moveSnake()
-            console.log("moveSnake")
             checkGameOver()
-            console.log("checkGameOver")
             generateSnake()
-            console.log("generateSnake")
             nextTick()
-            console.log("ticktime: " + tickTime)
         }, tickTime)
     }
     else {
@@ -97,9 +97,6 @@ function createFood() {
     for (let i = 0; i < snake.length; i++) {
         if (foodPositionX == snake[i].x && foodPositionY == snake[i].y) {
             createFood()
-            if (tickTime > minSpeedTickTime){
-                tickTime -= 8
-            }
         }
     }
 }
@@ -133,7 +130,7 @@ function moveSnake() {
         gameScore.textContent = getZeroes(score)
         createFood()
         if (tickTime > minSpeedTickTime) {
-            tickTime -= 8
+            tickTime -= 6
         }
     }
     else {
@@ -215,6 +212,7 @@ function checkGameOver() {
             running = false;
         }
     }
+
 }
 
 function getZeroes(score) {
@@ -239,7 +237,6 @@ function resetGame() {
     generateStartScreen()
     clearTimeout(timeoutId)
     running = false
-    running = false
 }
 
 function setVariables() {
@@ -253,7 +250,65 @@ function setVariables() {
     score = 0
     xStep = unitSize
     yStep = 0
-    tickTime = 400
-    minSpeedTickTime = 50
+    tickTime = 300
     movesQueue = []
 }
+
+function handleTouchStart(evt) {
+    const firstTouch = evt.touches[0];                                     
+    xStart = firstTouch.clientX                                     
+    yStart = firstTouch.clientY                                      
+}
+
+function handleTouchEnd(evt) {
+    if (!xStart || !yStart || !running) {
+        return;
+    }
+
+    const goingUp = (yStep == -unitSize)
+    const goingDown = (yStep == unitSize)
+    const goingRight = (xStep == unitSize)
+    const goingLeft = (xStep == -unitSize)
+
+    let xEnd = evt.changedTouches[0].clientX
+    let yEnd = evt.changedTouches[0].clientY
+
+    let xDiff = xStart - xEnd
+    let yDiff = yStart - yEnd
+
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+        if (xDiff > 0 && goingLeft) { 
+            return
+        } else if (goingRight) {
+            return
+        }                       
+    } else {
+        if (yDiff > 0 && goingUp) { 
+            return
+        } else if (goingDown) { 
+            return
+        }                                                                 
+    }
+
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+        if (xDiff > 0 && !goingRight) { 
+            xStep = -unitSize
+            yStep = 0
+        } else if (!goingLeft) {
+            xStep = unitSize;
+            yStep = 0;
+        }                       
+    } else {
+        if (yDiff > 0 && !goingDown) { 
+            xStep = 0;
+            yStep = -unitSize;
+        } else if (!goingUp) { 
+            xStep = 0;
+            yStep = unitSize;
+        }                                                                 
+    }
+
+    xDown = null;
+    yDown = null;                                             
+}
+
