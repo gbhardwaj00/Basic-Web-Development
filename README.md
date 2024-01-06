@@ -29,11 +29,13 @@ Source - https://codepen.io/gbhardwaj00/pen/wvOvzPV
 
 ##StopWatch
 
-A sleek, intuitive, and usable stopwatch with dark and light modes. Users can start, pause, and reset the measured time. 
+A sleek, intuitive, and usable stopwatch with dark and light modes. Users can start, pause, and reset the measured time.
+Source - https://codepen.io/gbhardwaj00/pen/wvNeWPV
 
 ##TicTacToe
 
 A vibrant and interactive player-vs-player tic-tac-toe game with animations.
+Source - https://codepen.io/gbhardwaj00/pen/oNmKXOB
 
 
 
